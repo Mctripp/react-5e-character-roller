@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import axios from 'axios'
-// import apiUrl from './../../apiConfig'
+import dndApiUrl from './../../dndApiConfig'
 
 const Dropdown = ({ urlSuffix, resourceName }) => {
   const [isLoaded, setIsLoaded] = React.useState(false)
@@ -8,7 +8,7 @@ const Dropdown = ({ urlSuffix, resourceName }) => {
 
   React.useEffect(() => {
     axios({
-      url: `https://www.dnd5eapi.co/api/${urlSuffix}`
+      url: `${dndApiUrl}${urlSuffix}`
     })
       .then(res => {
         setResource(res.data.results.map(result => {
