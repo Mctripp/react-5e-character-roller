@@ -19,11 +19,14 @@ const Dropdown = ({ urlSuffix, resourceName }) => {
       .catch(console.error)
   }, [])
 
+  const handleChange = (event) => {
+    event.target.name = event.target.value
+  }
+
   if (isLoaded) {
     return (
       <Fragment>
-        <select>
-          <option>{ resourceName }</option>
+        <select name='currentResource' onChange={handleChange}>
           ({resource.map((item, idx) => {
             return (<option key={idx} value={item.toLowerCase()}>{item}</option>)
           })})
