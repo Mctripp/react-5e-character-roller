@@ -24,7 +24,7 @@ const ClassInfo = ({ className }) => {
   React.useEffect(() => {
     console.log({ className }.className)
     axios({
-      url: `${dndApiUrl}classes/${{ className }.className}`
+      url: `${dndApiUrl}/api/classes/${{ className }.className}`
     })
       .then(res => {
         // Saving throws
@@ -70,40 +70,41 @@ const ClassInfo = ({ className }) => {
   if (isLoaded) {
     return (
       <Fragment>
-        <h1>Saving throws:</h1>
+        <h1>CLASS INFO</h1>
+        <h2><u>Saving Throws</u></h2>
         <h3>
           <ul>
             { savingThrowsNames.map((savingThrowName, index) => {
               const savingThrowURL = savingThrowsURLs[index]
               return (
-                <li key={index}><a href={savingThrowURL}>{savingThrowName}</a></li>
+                <li key={index}><a href={`${dndApiUrl}` + savingThrowURL} target={'_blank'}>{savingThrowName}</a></li>
               )
             }) }
           </ul>
         </h3>
-        <h1>Class proficiencies:</h1>
+        <h2><u>Class Proficiencies</u></h2>
         <h3><ul>
           { classProficienciesNames.map((classProficienciesName, index) => {
             const classProficienciesURL = classProficienciesURLs[index]
             return (
-              <li key={index}><a href={classProficienciesURL}>{classProficienciesName}</a></li>
+              <li key={index}><a href={`${dndApiUrl}` + classProficienciesURL} target={'_blank'}>{classProficienciesName}</a></li>
             )
           }) }
         </ul></h3>
-        <h1>Class proficiency choices (Choose {classProficiencyChoicesNum}):</h1>
+        <h2><u>Class proficiency choices (Choose {classProficiencyChoicesNum})</u></h2>
         <h3><ul>
           { classProficiencyChoicesNames.map((classProficiencyChoicesName, index) => {
             const classProficiencyChoicesURL = classProficiencyChoicesURLs[index]
             return (
-              <li key={index}><a href={classProficiencyChoicesURL}>{classProficiencyChoicesName}</a></li>
+              <li key={index}><a href={`${dndApiUrl}` + classProficiencyChoicesURL} target={'_blank'}>{classProficiencyChoicesName}</a></li>
             )
           }) }
         </ul></h3>
-        <h1>Starting Equipment URL:</h1>
+        <h2><u>Starting Equipment URL</u></h2>
         <h3>{ classEquipmentURL }</h3>
-        <h1>Subclasses URLs:</h1>
+        <h2><u>Subclasses URLs</u></h2>
         <h3>{ subclassesURLs }</h3>
-        <h1>Levels URL:</h1>
+        <h2><u>Levels URL</u></h2>
         <h3>{ levelsURL }</h3>
       </Fragment>
     )

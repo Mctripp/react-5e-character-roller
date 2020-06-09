@@ -1,3 +1,3 @@
-const dndApiUrl = 'https://www.dnd5eapi.co/api/'
+const dndApiUrl = 'https://www.dnd5eapi.co'
 
 export default dndApiUrl

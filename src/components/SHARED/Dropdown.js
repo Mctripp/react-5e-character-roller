@@ -8,7 +8,7 @@ const Dropdown = ({ urlSuffix, resourceName, handleChange }) => {
 
   React.useEffect(() => {
     axios({
-      url: `${dndApiUrl}${urlSuffix}`
+      url: `${dndApiUrl}/api/${urlSuffix}`
     })
       .then(res => {
         setResource(res.data.results.map(result => {
