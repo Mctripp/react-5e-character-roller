@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import axios from 'axios'
 import dndApiUrl from './../../dndApiConfig'
 
-const Dropdown = ({ urlSuffix, resourceName }) => {
+const Dropdown = ({ urlSuffix, resourceName, handleChange }) => {
   const [isLoaded, setIsLoaded] = React.useState(false)
   const [resource, setResource] = React.useState([])
 
@@ -19,17 +19,13 @@ const Dropdown = ({ urlSuffix, resourceName }) => {
       .catch(console.error)
   }, [])
 
-  const handleChange = (event) => {
-    event.target.name = event.target.value
-  }
-
   if (isLoaded) {
     return (
       <Fragment>
         <select name='currentResource' onChange={handleChange}>
-          ({resource.map((item, idx) => {
+          {resource.map((item, idx) => {
             return (<option key={idx} value={item.toLowerCase()}>{item}</option>)
-          })})
+          })}
         </select>
       </Fragment>
     )

@@ -7,8 +7,9 @@ const DevPage = () => {
   // const [currentRace, setCurrentRace] = ('')
 
   const handleClassChange = event => {
-    setCurrentClass(event.target.currentResource)
-    console.log(currentClass)
+    const idx = event.target.selectedIndex
+    setCurrentClass(event.target[idx].value)
+    console.log(event.target[idx].value)
   }
 
   // const handleRaceChange = event => {

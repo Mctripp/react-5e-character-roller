@@ -65,20 +65,40 @@ const ClassInfo = ({ className }) => {
       })
       .then(setIsLoaded(true))
       .catch(console.error)
-  }, [])
+  }, [className])
 
   if (isLoaded) {
     return (
       <Fragment>
         <h1>Saving throws:</h1>
-        <h3>{ savingThrowsNames }</h3>
-        <h3>{ savingThrowsURLs }</h3>
+        <h3>
+          <ul>
+            { savingThrowsNames.map((savingThrowName, index) => {
+              const savingThrowURL = savingThrowsURLs[index]
+              return (
+                <li key={index}><a href={savingThrowURL}>{savingThrowName}</a></li>
+              )
+            }) }
+          </ul>
+        </h3>
         <h1>Class proficiencies:</h1>
-        <h3>{ classProficienciesNames }</h3>
-        <h3>{ classProficienciesURLs }</h3>
+        <h3><ul>
+          { classProficienciesNames.map((classProficienciesName, index) => {
+            const classProficienciesURL = classProficienciesURLs[index]
+            return (
+              <li key={index}><a href={classProficienciesURL}>{classProficienciesName}</a></li>
+            )
+          }) }
+        </ul></h3>
         <h1>Class proficiency choices (Choose {classProficiencyChoicesNum}):</h1>
-        <h3>{ classProficiencyChoicesNames }</h3>
-        <h3>{ classProficiencyChoicesURLs }</h3>
+        <h3><ul>
+          { classProficiencyChoicesNames.map((classProficiencyChoicesName, index) => {
+            const classProficiencyChoicesURL = classProficiencyChoicesURLs[index]
+            return (
+              <li key={index}><a href={classProficiencyChoicesURL}>{classProficiencyChoicesName}</a></li>
+            )
+          }) }
+        </ul></h3>
         <h1>Starting Equipment URL:</h1>
         <h3>{ classEquipmentURL }</h3>
         <h1>Subclasses URLs:</h1>
