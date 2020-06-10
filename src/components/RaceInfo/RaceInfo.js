@@ -13,13 +13,13 @@ const RaceInfo = ({ raceName }) => {
   const [raceAbilityBonusesNames, setRaceAbilityBonusesNames] = React.useState([])
   const [raceAbilityBonusesNums, setRaceAbilityBonusesNums] = React.useState([])
   const [raceAbilityBonusesURLs, setRaceAbilityBonusesURLs] = React.useState([])
-  // const [raceSpeed, setRaceSpeed] = React.useState(null)
-  // const [raceAlignment, setRaceAlignment] = React.useState('')
-  // const [raceAge, setRaceAge] = React.useState('')
-  // const [raceSize, setRaceSize] = React.useState('')
-  // const [raceSizeDescription, setRaceSizeDescription] = React.useState('')
-  // // Might have to expand this one
-  // const [raceStartingProficiencies, setRaceStartingProficiencies] = React.useState([])
+  const [raceSpeed, setRaceSpeed] = React.useState(null)
+  const [raceAlignment, setRaceAlignment] = React.useState('')
+  const [raceAge, setRaceAge] = React.useState('')
+  const [raceSize, setRaceSize] = React.useState('')
+  const [raceSizeDescription, setRaceSizeDescription] = React.useState('')
+  const [raceStartingProficienciesNames, setRaceStartingProficienciesNames] = React.useState([])
+  const [raceStartingProficienciesURLs, setRaceStartingProficienciesURLs] = React.useState([])
   // const [raceLanguagesNames, setRaceLanguagesNames] = React.useState([])
   // const [raceLanguagesURLs, setRaceLanguagesURLs] = React.useState([])
   // const [raceLanguageDesc, setRaceLanguageDesc] = React.useState('')
@@ -47,7 +47,22 @@ const RaceInfo = ({ raceName }) => {
         setRaceAbilityBonusesNums(res.data.ability_bonuses.map(abilityBonus => {
           return abilityBonus.bonus
         }))
-        //
+        // Speed
+        setRaceSpeed(res.data.speed)
+        // Alignment
+        setRaceAlignment(res.data.alignment)
+        // Age
+        setRaceAge(res.data.age)
+        // Size
+        setRaceSize(res.data.size)
+        setRaceSizeDescription(res.data.size_description)
+        // Starting Proficiencies
+        setRaceStartingProficienciesNames(res.data.starting_proficiencies.map(startingProficiency => {
+          return startingProficiency.name
+        }))
+        setRaceStartingProficienciesURLs(res.data.starting_proficiencies.map(startingProficiency => {
+          return startingProficiency.url
+        }))
         // // Proficiencies
         // setClassProficienciesNames(res.data.proficiencies.map(proficiency => {
         //   return proficiency.name
@@ -92,6 +107,24 @@ const RaceInfo = ({ raceName }) => {
               const abilityBonusNum = raceAbilityBonusesNums[index]
               return (
                 <li key={index}><a href={`${dndApiUrl}` + abilityBonusURL} target={'_blank'}>{abilityBonusName}: +{abilityBonusNum}</a></li>
+              )
+            }) }
+          </ul>
+        </h3>
+        <h2><u>Speed</u>: {raceSpeed}</h2>
+        <h2><u>Alignment</u></h2>
+        <h3>{raceAlignment}</h3>
+        <h2><u>Age</u></h2>
+        <h3>{raceAge}</h3>
+        <h2><u>Size</u>: {raceSize}</h2>
+        <h3>{raceSizeDescription}</h3>
+        <h2><u>Starting Proficiencies</u></h2>
+        <h3>
+          <ul>
+            { raceStartingProficienciesNames.map((startingProficiencyName, index) => {
+              const startingProficiencyURL = raceStartingProficienciesURLs[index]
+              return (
+                <li key={index}><a href={`${dndApiUrl}` + startingProficiencyURL} target={'_blank'}>{startingProficiencyName}</a></li>
               )
             }) }
           </ul>
