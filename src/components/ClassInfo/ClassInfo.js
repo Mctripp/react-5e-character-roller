@@ -71,8 +71,8 @@ const ClassInfo = ({ className }) => {
     return (
       <Fragment>
         <h1>CLASS INFO</h1>
-        <h2><u>Saving Throws</u></h2>
-        <h3>
+        <h4><u>Saving Throws</u></h4>
+        <h5>
           <ul>
             { savingThrowsNames.map((savingThrowName, index) => {
               const savingThrowURL = savingThrowsURLs[index]
@@ -81,31 +81,31 @@ const ClassInfo = ({ className }) => {
               )
             }) }
           </ul>
-        </h3>
-        <h2><u>Class Proficiencies</u></h2>
-        <h3><ul>
+        </h5>
+        <h4><u>Class Proficiencies</u></h4>
+        <h5><ul>
           { classProficienciesNames.map((classProficienciesName, index) => {
             const classProficienciesURL = classProficienciesURLs[index]
             return (
               <li key={index}><a href={`${dndApiUrl}` + classProficienciesURL} target={'_blank'}>{classProficienciesName}</a></li>
             )
           }) }
-        </ul></h3>
-        <h2><u>Class proficiency choices (Choose {classProficiencyChoicesNum})</u></h2>
-        <h3><ul>
+        </ul></h5>
+        <h4><u>Class proficiency choices (Choose {classProficiencyChoicesNum})</u></h4>
+        <h5><ul>
           { classProficiencyChoicesNames.map((classProficiencyChoicesName, index) => {
             const classProficiencyChoicesURL = classProficiencyChoicesURLs[index]
             return (
               <li key={index}><a href={`${dndApiUrl}` + classProficiencyChoicesURL} target={'_blank'}>{classProficiencyChoicesName}</a></li>
             )
           }) }
-        </ul></h3>
-        <h2><u>Starting Equipment URL</u></h2>
-        <h3>{ classEquipmentURL }</h3>
-        <h2><u>Subclasses URLs</u></h2>
-        <h3>{ subclassesURLs }</h3>
-        <h2><u>Levels URL</u></h2>
-        <h3>{ levelsURL }</h3>
+        </ul></h5>
+        <h4><u>Starting Equipment URL</u></h4>
+        <h5><a href={`${dndApiUrl}` + classEquipmentURL} target={'_blank'}>Starting Equipment</a></h5>
+        <h4><u>Subclasses URLs</u></h4>
+        <h5>{ subclassesURLs }</h5>
+        <h4><u>Levels URL</u></h4>
+        <h5>{ levelsURL }</h5>
       </Fragment>
     )
   } else {
